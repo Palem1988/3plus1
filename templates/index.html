@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cryptic Trend</title>
+    <title>Klaud</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/static/bootstrap.min.css" rel="stylesheet">
@@ -32,22 +32,27 @@
     <script src="/static/jquery.min.js"></script>
 
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="57x57" href="/static/icons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/static/icons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/static/icons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/static/icons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/static/icons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/static/icons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/static/icons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/static/icons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/static/icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/static/icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
-    <link rel="manifest" href="/static/icons/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/static/icons/ms-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
     <meta name="theme-color" content="#ffffff">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -132,7 +137,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="/Newfolder/headerLogo.png" alt="logo">
+                    <img src="/static/klaud.png" alt="logo" height = '55px'>
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -266,22 +271,22 @@
                 <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Social Correlation Chart
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Temperature / Power Chart
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Select Currency
+                                        Select Time Period
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Bitcoin</a>
+                                        <li><a href="#">Day</a>
                                         </li>
-                                        <li><a href="#">Litcoin</a>
+                                        <li><a href="#">Month</a>
                                         </li>
-                                        <li><a href="#">Ethereum</a>
+                                        <li><a href="#">Year</a>
                                         </li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Remove all filters</a>
+                                        <li><a href="#">Default</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -300,25 +305,27 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Chart Filters
+                            <i class="fa fa-bell fa-fw"></i> <span id='menu-title'>Temperature Control (Living Room)</span>
                             <div class="pull-right">
                                 
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                Select Filters
+                                Select Room
                                 <span class="caret"></span>
                                 </button>
                                 
                                 <ul class="dropdown-menu pull-right" role="menu" >
-                                    <li class="active" id ="weights-dropdown"><a href="#weights-menu" data-toggle="tab">Indexes / Weights</a>
+                                    <li class="active" id ="weights-dropdown"><a href="#weights-menu" data-toggle="tab" onclick = "document.getElementById('menu-title').textContent = 'Temperature Control (Living Room)';">Living Room</a>
                                     </li>
-                                    <li><a href="#filter-menu" data-toggle="tab">Filters</a>
+                                    <li><a href="#filter-menu" data-toggle="tab" onclick="document.getElementById('menu-title').textContent = 'Temperature Control (Bedroom)';">Bedroom</a>
                                     </li>
                                 </ul>
                                 </div>
                             </div>
                                 
                             <script>
+                                
+                                
                                 $(".dropdown-menu").on("click", function(){
                                   $(".dropdown-menu").find(".active").removeClass("active");
                                   $(this).parent().addClass("active");
@@ -368,68 +375,7 @@
                                 </div>
                             </div>
                             <!-- /.list-group (weights-menu) -->
-                            <div class="tab-pane fade in" id="filter-menu">
-                            <div class="list-group" >
-                                <div class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-6" >
-                                            <div class="center-block"> Min Followers: </div>
-                                        </div>
-                                        <div class="col-xs-6" style="padding-left: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="follower-filter" onchange=reviseFilter()  >
-                                            </div>  
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-6" >
-                                            <div class="center-block"> Min Favourites: </div>
-                                        </div>
-                                        <div class="col-xs-6" style="padding-left: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="favourites-filter" onchange=reviseFilter()  >
-                                            </div>  
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-6" >
-                                            <div class="center-block"> Min Retweets: </div>
-                                        </div>
-                                        <div class="col-xs-6" style="padding-left: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="retweets-filter" onchange=reviseFilter()  >
-                                            </div>  
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-6" >
-                                            <div class="center-block"> Verified: </div>
-                                        </div>
-                                        <div class="col-xs-6 pull-left" style="padding-left: 0 !important;">
-                                            <div class="form-group">
-                                                
-                                                <input type="checkbox" class="form-control" id="verified-filter" align="left" onchange=reviseFilter()  >
-                                                
-                                            </div> 
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                              
-                                
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> Last Update
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
-                                </div>
-                            </div>
+                            
                             <!-- /.list-group (filter-menu) -->
                             
                             
@@ -473,50 +419,7 @@
     
     <!--<script type="text/javascript" src="output.json"></script> -->
     
-    <script>
     
-    var myRequest = new Request('/static/output.json');
-        
-    fetch(myRequest)
-      .then(function(response) { return response.json(); })
-      .then(function(json) {
-            document.getElementById('user_id1').textContent = json.user_name['0'];
-            document.getElementById('profile_pic1').src = json.profile_pic['0'];
-            document.getElementById('text1').textContent = json.text['0'];
-            document.getElementById('created_at1').textContent=json.created_at['0'];
-            document.getElementById('retweet1').textContent=json.RT['0'];
-            document.getElementById('favourite1').textContent=json.favourites['0'];
-
-            document.getElementById('user_id2').textContent = json.user_name['1'];
-            document.getElementById('profile_pic2').src = json.profile_pic['1'];
-            document.getElementById('text2').textContent = json.text['1'];
-            document.getElementById('created_at2').textContent=json.created_at['1'];
-            document.getElementById('retweet2').textContent=json.RT['1'];
-            document.getElementById('favourite2').textContent=json.favourites['1'];
-
-            document.getElementById('user_id3').textContent = json.user_name['2'];
-            document.getElementById('profile_pic3').src = json.profile_pic['2'];
-            document.getElementById('text3').textContent = json.text['2'];
-            document.getElementById('created_at3').textContent=json.created_at['2'];
-            document.getElementById('retweet3').textContent=json.RT['2'];
-            document.getElementById('favourite3').textContent=json.favourites['2'];
-
-            document.getElementById('user_id4').textContent = json.user_name['3'];
-            document.getElementById('profile_pic4').src = json.profile_pic['3'];
-            document.getElementById('text4').textContent = json.text['3'];
-            document.getElementById('created_at4').textContent=json.created_at['3'];
-            document.getElementById('retweet4').textContent=json.RT['3'];
-            document.getElementById('favourite4').textContent=json.favourites['3'];
-
-            document.getElementById('user_id5').textContent = json.user_name['4'];
-            document.getElementById('profile_pic5').src = json.profile_pic['4'];
-            document.getElementById('text5').textContent = json.text['4'];
-            document.getElementById('created_at5').textContent=json.created_at['4'];
-            document.getElementById('retweet5').textContent=json.RT['4'];
-            document.getElementById('favourite5').textContent=json.favourites['4'];
-      });
-
-    </script>
     
     
     

@@ -183,6 +183,42 @@ function generateData2(result){
 }
     
 
+function generateData3(result){
+    var array1 = result.data;
+    var arrayLength = 60;
+    var temp = [];
+    for (var i = 1; i < 60; i++){
+        time.push(result.data[i][0]);
+        output1.push(result.data[i][1]);
+        output2.push(result.data[i][2]);
+        
+	//output2.push(result.data[i][2]);
+    }
+    //console.log(output1);
+    //return temp;
+    
+   
+}
+
+function generateData4(result){
+    var array1 = result.data;
+    var arrayLength = 60;
+    var temp = [];
+    for (var i = 1; i < 60; i++){
+        time.push(result.data[i][0]);
+        output1.push(result.data[i][1]);
+        output2.push(result.data[i][2]);
+        output3.push(result.data[i][3]);
+        output4.push(result.data[i][4]);
+        
+	//output2.push(result.data[i][2]);
+    }
+    //console.log(output1);
+    //return temp;
+    
+   
+}
+
 
 
 function plotRawGraph(filename){
@@ -265,6 +301,54 @@ function plotLandlordGraph(filename){
     
     
 }
+/*
+var latest_index=60;
+
+function plotDynamic(){
+    
+    
+    ctx = document.getElementById('myChart').getContext('2d');
+    
+    var myRequest = new Request(filename);
+    
+    fetch(myRequest)
+      .then(function(response) { return response.text(); })
+      .then(function(csv) {   
+        Papa.parse(csv, {
+            complete: function(results) {
+               //console.log(results);
+                generateData3(results);
+                
+                
+                
+                var indexes = time[-1]+1;
+                for (var i =0; i< 60; i++){
+                    if(time[0] == myChart.label[i]){
+                        index=i;
+                    }
+                    
+                }
+                
+                myChart.addData([output1,output2], )
+                
+                var temp_slice = output1.slice(-60);
+                var temp_slice2 = output2.slice(-60);
+                
+                
+                
+            }
+            
+            
+            
+            
+        }
+    )};
+        
+    
+    
+}
+*/
+
 
 
 
@@ -338,9 +422,43 @@ function plotLandlordPower(){
                     type: 'bar',
                     data: {
                       labels:Array.apply(null, Array(time_len)).map(function (_, i) {return i;}),
+                      backgroundColor: '#f0ad4e',
+                      borderColor: '#f0ad4e',
+                      borderWidth: 1,
                       datasets: [
                         output1_plot],
-                    }
+                    },
+                      options: {
+                        responsive: true,
+                        title:{
+                            display:true,
+                            text:'Total Monthly Power Consumption for each Household'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'House Number'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Power Consumption for November (kWh)'
+                                }
+                            }]
+                        }
+                      }
                   });
                                 
             }
@@ -379,7 +497,11 @@ window.onload = function(){
     else if(location.pathname == "/landlord"){
         
         
-        plotLandlordPower(file);
+        plotLandlordPower();
+    }
+    
+    else if (location.pathname == "/"){
+        plotUserPower();
     }
     
 
@@ -452,7 +574,40 @@ function plotLandlordTempWeekly(){
                       labels:Array.apply(null, Array(output1.length)).map(function (_, i) {return i;}),
                       datasets: [
                         output1_plot,output2_plot],
-                    }
+                    },
+                      
+                      options: {
+                        responsive: true,
+                        title:{
+                            display:true,
+                            text:'Electricity Bill Optimisation Chart'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Time (24 hrs)'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Cost per hour'
+                                }
+                            }]
+                        }
+                      }
+                      
                   });
                                 
             }
@@ -463,6 +618,127 @@ function plotLandlordTempWeekly(){
     document.getElementById('min').textContent = "-";
     document.getElementById('max').textContent = "-";
     document.getElementById('avg').textContent = "-";
+    
+}
+
+
+function plotUserPower(){
+    /*console.log(output1);
+
+    output1.length=0;
+    output2.length=0;
+    output3.length=0;
+    output4.length=0;
+    output5.length=0;
+    output6.length=0;
+    output7.length=0;
+    myChart.destroy();
+    */
+    
+    //clearChart();
+
+    
+    ctx = document.getElementById('myChart').getContext('2d');
+    
+    var myRequest = new Request("/static/user_power.csv");
+
+    fetch(myRequest)
+      .then(function(response) { return response.text(); })
+      .then(function(csv) {   
+        Papa.parse(csv, {
+            complete: function(results) {
+                //console.log(results);
+                generateData4(results);
+                var output1_plot = {
+                  data: output1,
+                  label: "Kevin's Temperature",
+                  borderColor: "#0052C2",
+                  fill: false
+                }
+                //console.log(output1);
+                //console.log(output2);
+		var output2_plot = {
+                  data: output2,
+                  label: "Kevin's Power Consumption",
+                  borderColor: "#0052C2",
+                  fill: false
+                }
+        var output3_plot = {
+                  data: output3,
+                  label: "Michael's Power Consumption",
+                  borderColor: "#0052C2",
+                    yAxisID: "y-axis-1",
+                  fill: false
+                }
+        var output4_plot = {
+                  data: output4,
+                  label: "Michael's Room Temperature",
+                  borderColor: "#f0ad4e",
+                  fill: false,
+                yAxisID: "y-axis-2",
+                  borderDash: [5, 5]
+                }
+		
+
+                  myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                      labels:time,
+                      datasets: [
+                        output3_plot,output4_plot],
+                    },
+                      
+                      options: {
+                        responsive: true,
+                        title:{
+                            display:true,
+                            text:'Temperature Power Chart for Michael (27/11/17)'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Time (24 hrs)'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                position: "left",
+                                    id: "y-axis-2",
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Power Consumption(kWh)',
+                                    
+                                }},{
+                                display:true,
+                                    position: "right",
+                                        id: "y-axis-1",
+                                scaleLabel:{
+                                        display: true,
+                                        labelString: 'Degrees Celsius',
+                                        
+                                    }
+                                }
+                                
+                            ]
+                        }
+                      }
+                      
+                  });
+                                
+            }
+        });
+    });
+
     
 }
 

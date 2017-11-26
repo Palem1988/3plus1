@@ -6,8 +6,14 @@ var times = [];
 var timeRange = 50;
 
 var output1_coeff = 1;
-var retweetCoefs = [1,1];
-var favCoefs = [1,1];
+var output2_coeff = 1;
+var output3_coeff = 1;
+var output4_coeff = 1;
+var output5_coeff = 1;
+var output6_coeff = 1;
+var output7_coeff = 1;
+
+
 
     var output1 = [];
     var output1_plot = {};   
@@ -220,31 +226,10 @@ function plotLandlordGraph(filename){
     
 }
 
-window.onload = function(){
-    
-    var file = '/static/kevin.csv';
-    
-    plotRawGraph(file);
-    
-    document.getElementById('output1_coeff').value = 1;
-      document.getElementById('output2_coeff').value = 1;
-      document.getElementById('output3_coeff').value = 1;   
-      document.getElementById('output4_coeff').value = 1;
-      document.getElementById('output5_coeff').value = 1;
-      document.getElementById('output6_coeff').value = 1;
-      document.getElementById('output7_coeff').value = 1;
-    
-    
-    
-    updateIndicator();
-
-    
-  
-};
 
 
-function plotLandlordTempWeekly(){
-    console.log(output1);
+function plotLandlordTempWeekly(filename){
+    /*console.log(output1);
 
     output1.length=0;
     output2.length=0;
@@ -254,8 +239,8 @@ function plotLandlordTempWeekly(){
     output6.length=0;
     output7.length=0;
     myChart.destroy();
+    */
     
-    var filename = '/static/landLord.csv';
     ctx = document.getElementById('myChart').getContext('2d');
     
     var myRequest = new Request(filename);
@@ -332,6 +317,39 @@ function plotLandlordTempWeekly(){
     });
     
 }
+
+
+
+window.onload = function(){
+    
+    if(location.pathname == "/rawData"){
+        var file = '/static/kevin.csv';
+    
+        document.getElementById('output1_coeff').value = output1_coeff;
+      document.getElementById('output2_coeff').value = output2_coeff;
+      document.getElementById('output3_coeff').value = output3_coeff;   
+      document.getElementById('output4_coeff').value = output4_coeff;
+      document.getElementById('output5_coeff').value = output5_coeff;
+      document.getElementById('output6_coeff').value = output6_coeff;
+      document.getElementById('output7_coeff').value = output7_coeff;
+
+        plotRawGraph(file);
+
+        updateIndicator();
+        
+    }
+    
+    else if(location.pathname == "/landlord"){
+        
+        var file = '/static/landLord.csv';
+        plotLandlordTempWeekly(file);
+    }
+    
+
+    
+  
+};
+
 
 
 

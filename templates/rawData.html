@@ -77,8 +77,19 @@
 
     function reviseCoefficient(){
         var temp = document.getElementById('output1_coeff').value;
-        
         output1_coeff = parseFloat(temp);
+        temp = document.getElementById('output2_coeff').value;
+        output2_coeff = parseFloat(temp);
+        temp = document.getElementById('output3_coeff').value;
+        output3_coeff = parseFloat(temp);
+        temp = document.getElementById('output4_coeff').value;
+        output4_coeff = parseFloat(temp);
+        temp = document.getElementById('output5_coeff').value;
+        output5_coeff = parseFloat(temp);
+        temp = document.getElementById('output6_coeff').value;
+        output6_coeff = parseFloat(temp);
+        temp = document.getElementById('output7_coeff').value;
+        output7_coeff = parseFloat(temp);
         
         updateIndicator();
 
@@ -116,13 +127,13 @@
             <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Michael's Dashboard</a>
+                        <a href="/"><i class="fa fa-dashboard fa-fw"></i>Michael's Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Short Term Chart<span class="fa arrow"></span></a>
+                        <a href="/rawData"><i class="fa fa-table fa-fw"></i> Michael's Raw Data</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i> User Raw Data</a>
+                        <a href="/landlord"><i class="fa fa-bar-chart-o fa-fw"></i>Landlord Overview Chart<span class="fa arrow"></span></a>
                     </li>
                 </ul>
             </div>
@@ -231,65 +242,92 @@
                             <div class="list-group" >
                                 <div class="list-group-item">
                                     <div class="row">
-                                        <div class="col-xs-4" style="padding-right: 0 !important;">
+                                        <div class="col-xs-6" style="padding-right: 0 !important;">
                                             <div class="form-group">
                                                 <input type="number" class="form-control" id="output1_coeff" onchange=reviseCoefficient() step="0.1">
                                             </div>
                                         </div>
-                                        <div class="col-xs-4 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
-                                            <div class="small text-muted"> x Tweets ^</div>
+                                        <div class="col-xs-6 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div class="small text-muted"> x Temperature</div>
                                         </div>
-                                        <div class="col-xs-4" style="padding-left: 0 !important;">
+
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-xs-6" style="padding-right: 0 !important;">
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="tweet_coeff2" onchange=reviseCoefficient() step="0.1" >
+                                                <input type="number" class="form-control" id="output2_coeff" onchange=reviseCoefficient() step="0.1">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div class="small text-muted"> x Humidity</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="list-group-item">
                                     <div class="row">
-                                        <div class="col-xs-4" style="padding-right: 0 !important;">
+                                        <div class="col-xs-6" style="padding-right: 0 !important;">
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="fav_coeff1" onchange=reviseCoefficient() step="0.1" >
+                                                <input type="number" class="form-control" id="output3_coeff" onchange=reviseCoefficient() step="0.1">
                                             </div>
                                         </div>
-                                        <div class="col-xs-4 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
-                                            <div class="small"> x Favourites ^</div>
+                                        <div class="col-xs-6 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div class="small text-muted"> x Visible</div>
                                         </div>
-                                        <div class="col-xs-4">
-                                            <div class="form-group" style="padding-left: 0 !important;">
-                                                <input type="number" class="form-control" id="fav_coeff2" onchange=reviseCoefficient() step="0.1" >
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="list-group-item">
                                     <div class="row">
-                                        <div class="col-xs-4" style="padding-right: 0 !important;">
+                                        <div class="col-xs-6" style="padding-right: 0 !important;">
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="RT_coeff1" onchange=reviseCoefficient() step="0.1" >
+                                                <input type="number" class="form-control" id="output4_coeff" onchange=reviseCoefficient() step="0.1">
                                             </div>
                                         </div>
-                                        <div class="col-xs-4 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
-                                            <div class="small"> x Retweets ^</div>
+                                        <div class="col-xs-6 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div class="small text-muted"> x Infra-red</div>
                                         </div>
-                                        <div class="col-xs-4" style="padding-left: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="RT_coeff2" onchange=reviseCoefficient() step="0.1" >
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="list-group-item">
                                     <div class="row">
-                                        <div class="col-xs-6">
-                                            Overall Offset:
-                                        </div>
-                                        <div class="col-xs-6">
+                                        <div class="col-xs-6" style="padding-right: 0 !important;">
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="offset" onchange=reviseCoefficient() step="500" >
+                                                <input type="number" class="form-control" id="output5_coeff" onchange=reviseCoefficient() step="0.1">
                                             </div>
                                         </div>
+                                        <div class="col-xs-6 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div class="small text-muted"> x Acceleration_x</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-xs-6" style="padding-right: 0 !important;">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="output6_coeff" onchange=reviseCoefficient() step="0.1">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div class="small text-muted"> x Acceleration_y</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-xs-6" style="padding-right: 0 !important;">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="output7_coeff" onchange=reviseCoefficient() step="0.1">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div class="small text-muted"> x Acceleration_z</div>
+                                        </div>
+
                                     </div>
                                 </div>
                                               

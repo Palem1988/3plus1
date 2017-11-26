@@ -71,45 +71,45 @@
         }
       }
         
-    </style>
-    
-    <script>
-
-    function reviseCoefficient(){
-        tweet_coeff1 = document.getElementById('tweet_coeff1').value;
-        tweet_coeff2 = document.getElementById('tweet_coeff2').value;
-        //tweet_coeff3 = document.getElementById('tweet_coeff3').value;
-        
-        tweetCoefs[0] = parseFloat(tweet_coeff1);
-        tweetCoefs[1] = parseFloat(tweet_coeff2);
-        //tweetCoefs[2] = parseFloat(tweet_coeff3);
-        
-        fav_coeff1 = document.getElementById('fav_coeff1').value;
-        fav_coeff2 = document.getElementById('fav_coeff2').value;
-        //fav_coeff3 = document.getElementById('fav_coeff3').value
-        
-        favCoefs[0] = parseFloat(fav_coeff1);
-        favCoefs[1] = parseFloat(fav_coeff2);
-        //favCoefs[2] = parseInt(fav_coeff3);
-        
-        RT_coeff1 = document.getElementById('RT_coeff1').value;
-        RT_coeff2 = document.getElementById('RT_coeff2').value;
-        //RT_coeff3 = document.getElementById('RT_coeff3').value;
-        
-        retweetCoefs[0] = parseFloat(RT_coeff1);
-        retweetCoefs[1] = parseFloat(RT_coeff2);
-        //retweetCoefs[2] = parseInt(RT_coeff3);
-        
-        offset = document.getElementById('offset').value;
-        indicatorOffset = parseFloat(offset);
-        
-        updateIndicator();
-
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+        width: 90%;
     }
-    
-    </script>
-    
-    
+        
+    .button-green {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #4CAF50;
+    }
+
+    .button-green:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .button-red {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #f44336;
+    }
+
+    .button-red:hover {
+        background-color: #f44336;
+        color: white;
+    }
+        
+    </style>
 
 
     
@@ -174,11 +174,11 @@
                         <div style="background-color: #2157a7; border-color: #2157a7" class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3 text-right">
-                                    <i class="fa  fa-twitter  fa-5x"></i>
+                                    <i class="fa  fa-bolt  fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge" id="socialCorrIndex">...</div>
-                                    <div>Social Correlation Index</div>
+                                    <div class="huge" id="socialCorrIndex">£32.14</div>
+                                    <div>Current Electricity Bill (Nov)</div>
                                 </div>
                             </div>
                         </div>
@@ -191,41 +191,41 @@
                         </a>
                     </div>
                 </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3 text-right">
-                                    <i class="fa  fa-connectdevelop  fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge" id="sensitivityIndex">...</div>
-                                    <div>Sensitivity Index</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa  fa-retweet   fa-5x"></i>
+                                <div class="col-xs-3 text-right">
+                                    <i class="fa  fa-cloud  fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge" id="trendingTweetsCounter">...</div>
-                                    <div>Trending Tweets</div>
+                                    <div class="huge" id="sensitivityIndex">65%</div>
+                                    <div>Air Quality</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa  fa-warning   fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge" id="trendingTweetsCounter">45%</div>
+                                    <div>Mould Risk</div>
                                 </div>
                             </div>
                         </div>
@@ -239,15 +239,15 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div style="background-color: #d62027; border-color: #d62027" class="panel-heading">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
                                     <i class="fa  fa-globe   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge" id="estimatedReach">...</div>
-                                    <div>Estimated Reach</div>
+                                    <div class="huge" id="estimatedReach">ON</div>
+                                    <div>KAOS Status</div>
                                 </div>
                             </div>
                         </div>
@@ -347,75 +347,23 @@
                             <div id="weights-menu" class="tab-pane fade in active">
                             <div class="list-group" >
                                 <div class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-4" style="padding-right: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="tweet_coeff1" onchange=reviseCoefficient() step="0.1">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
-                                            <div class="small text-muted"> x Tweets ^</div>
-                                        </div>
-                                        <div class="col-xs-4" style="padding-left: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="tweet_coeff2" onchange=reviseCoefficient() step="0.1" >
-                                            </div>
-                                        </div>
+                                    <div class="row text-center">
+                                        <button class="button button-green"><i class="fa  fa-angle-double-up fa-fw"></i>Raise Temp</button>
                                     </div>
                                 </div>
                                 <div class="list-group-item">
                                     <div class="row">
-                                        <div class="col-xs-4" style="padding-right: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="fav_coeff1" onchange=reviseCoefficient() step="0.1" >
-                                            </div>
+                                        <div class="col-xs-12 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
+                                            <div > Current Temperature: </div>
                                         </div>
-                                        <div class="col-xs-4 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
-                                            <div class="small"> x Favourites ^</div>
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <div class="form-group" style="padding-left: 0 !important;">
-                                                <input type="number" class="form-control" id="fav_coeff2" onchange=reviseCoefficient() step="0.1" >
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-4" style="padding-right: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="RT_coeff1" onchange=reviseCoefficient() step="0.1" >
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4 text-center" style="padding-left: 0 !important;padding-right: 0 !important;">
-                                            <div class="small"> x Retweets ^</div>
-                                        </div>
-                                        <div class="col-xs-4" style="padding-left: 0 !important;">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="RT_coeff2" onchange=reviseCoefficient() step="0.1" >
-                                            </div>
-                                        </div>
+                                    <div class="row text-center">
+                                        <button class="button button-red"><i class="fa  fa-angle-double-down fa-fw"></i>Lower Temp</button>
                                     </div>
-                                </div>
-                                <div class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            Overall Offset:
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="offset" onchange=reviseCoefficient() step="500" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                              
-                                
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> Last Update
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
+                                </div>  
                                 
                                 </div>
                             </div>
@@ -505,180 +453,7 @@
             </div>
             <!-- /.row -->
             
-            <div class="chat-panel panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> Recent Trending Tweets
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="chat">
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img id="profile_pic1" alt="User Avatar" class="img-circle" width="50px" height="50px"/>
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font" id="user_id1" >Jack Sparrow</strong>
-                                            <small class="pull-right text-muted" >
-                                                <i class="fa fa-clock-o fa-fw" ></i><span id="created_at1">...</span>
-                                            </small>
-                                        </div>
-                                        <p id = "text1">
-                                            ...
-                                        </p>
-                                        <br>
-                                        <table>
-                                            <tr>
-                                                <td width = 100px>
-                                                    <i class="fa fa-retweet fa-fw"></i><span id="retweet1">...</span>
-                                                </td>
-                                                <td width = "100px">
-                                                    <i class="fa fa-heart-o fa-fw"></i><span id="favourite1">...</span>
-                                                </td>
-                                            
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img id="profile_pic2" alt="User Avatar" class="img-circle" width="50px" height="50px"/>
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font" id="user_id2" >Jack Sparrow</strong>
-                                            <small class="pull-right text-muted" >
-                                                <i class="fa fa-clock-o fa-fw" ></i><span id="created_at2">...</span>
-                                            </small>
-                                        </div>
-                                        <p id = "text2">
-                                            
-                                        </p>
-                                        <br>
-                                        <table>
-                                            <tr>
-                                                <td width = 100px>
-                                                    <i class="fa fa-retweet fa-fw"></i><span id="retweet2"></span>
-                                                </td>
-                                                <td width = "100px">
-                                                    <i class="fa fa-heart-o fa-fw"></i><span id="favourite2"></span>
-                                                </td>
-                                            
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img id="profile_pic3" alt="User Avatar" class="img-circle" width="50px" height="50px"/>
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font" id="user_id3" >Jack Sparrow</strong>
-                                            <small class="pull-right text-muted" >
-                                                <i class="fa fa-clock-o fa-fw" ></i><span id="created_at3">...</span>
-                                            </small>
-                                        </div>
-                                        <p id = "text3">
-                                            
-                                        </p>
-                                        <br>
-                                        <table>
-                                            <tr>
-                                                <td width = 100px>
-                                                    <i class="fa fa-retweet fa-fw"></i><span id="retweet3">...</span>
-                                                </td>
-                                                <td width = "100px">
-                                                    <i class="fa fa-heart-o fa-fw"></i><span id="favourite3">...</span>
-                                                </td>
-                                            
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img id="profile_pic4" alt="User Avatar" class="img-circle" width="50px" height="50px"/>
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font" id="user_id4" >Jack Sparrow</strong>
-                                            <small class="pull-right text-muted" >
-                                                <i class="fa fa-clock-o fa-fw" ></i><span id="created_at4">...</span>
-                                            </small>
-                                        </div>
-                                        <p id = "text4">
-                                            
-                                        </p>
-                                        <br>
-                                        <table>
-                                            <tr>
-                                                <td width = 100px>
-                                                    <i class="fa fa-retweet fa-fw"></i><span id="retweet4">...</span>
-                                                </td>
-                                                <td width = "100px">
-                                                    <i class="fa fa-heart-o fa-fw"></i><span id="favourite4">...</span>
-                                                </td>
-                                            
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img id="profile_pic5" alt="User Avatar" class="img-circle" width="50px" height="50px"/>
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font" id="user_id5" >Jack Sparrow</strong>
-                                            <small class="pull-right text-muted" >
-                                                <i class="fa fa-clock-o fa-fw" ></i><span id="created_at5">...</span>
-                                            </small>
-                                        </div>
-                                        <p id = "text5">
-                                            
-                                        </p>
-                                        <br>
-                                        <table>
-                                            <tr>
-                                                <td width = 100px>
-                                                    <i class="fa fa-retweet fa-fw"></i><span id="retweet5">...</span>
-                                                </td>
-                                                <td width = "100px">
-                                                    <i class="fa fa-heart-o fa-fw"></i><span id="favourite5">...</span>
-                                                </td>
-                                            
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </li>
-                                
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-                        
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
-                </div>
+            
             
             
             

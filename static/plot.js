@@ -103,7 +103,23 @@ function updateIndicator(){
   document.getElementById('output7_coeff').value = output7_coeff;
 }
 
-    
+    var time = [];
+    var output1 = [];
+    var output1_plot = {};   
+    var output2 = [];  
+    var output2_plot = {};
+    var output3 = [];  
+    var output3_plot = {};
+    var output4 = [];  
+    var output4_plot = {};
+    var output5 = [];  
+    var output5_plot = {};
+    var output6 = [];  
+    var output6_plot = {};
+    var output7 = [];  
+    var output7_plot = {};
+
+    var minMaxAvg = [1,1,1];
     
 
 function generateData(result){
@@ -125,23 +141,47 @@ function generateData(result){
 }
 
 
+function generateData1(result){
+    var array1 = result.data;
+    var arrayLength = array1.length;
+    var temp = [];
+    minMaxAvg[0] = result.data[result.data.length-4][1];
+    minMaxAvg[1] = result.data[result.data.length-3][1];
+    minMaxAvg[2] = result.data[result.data.length-2][1];
+    for (var i = 1; i < result.data.length-4; i++){
+        time.push(result.data[i][0]);
+        output1.push(result.data[i][1]);
+        output2.push(minMaxAvg[0]);
+        output3.push(minMaxAvg[1]);
+        output4.push(minMaxAvg[2]);
+        
+	//output2.push(result.data[i][2]);
+    }
+    //console.log(output1);
+    //return temp;
+    
+   
+}
+
 //console.log(output1);
 
-    var time = [];
-    var output1 = [];
-    var output1_plot = {};   
-    var output2 = [];  
-    var output2_plot = {};
-    var output3 = [];  
-    var output3_plot = {};
-    var output4 = [];  
-    var output4_plot = {};
-    var output5 = [];  
-    var output5_plot = {};
-    var output6 = [];  
-    var output6_plot = {};
-    var output7 = [];  
-    var output7_plot = {};
+function generateData2(result){
+    var array1 = result.data;
+    var arrayLength = array1.length;
+    var temp = [];
+    for (var i = 1; i < result.data.length-1; i++){
+        time.push(result.data[i][0]);
+        output1.push(result.data[i][1]);
+        output2.push(result.data[i][2]);
+        
+	//output2.push(result.data[i][2]);
+    }
+    //console.log(output1);
+    //return temp;
+    
+   
+}
+    
 
 
 
@@ -228,7 +268,9 @@ function plotLandlordGraph(filename){
 
 
 
-function plotLandlordTempWeekly(filename){
+
+
+function plotLandlordPower(){
     /*console.log(output1);
 
     output1.length=0;
@@ -241,6 +283,8 @@ function plotLandlordTempWeekly(filename){
     myChart.destroy();
     */
     
+    var filename = '/static/total_power.csv';
+    
     ctx = document.getElementById('myChart').getContext('2d');
     
     var myRequest = new Request(filename);
@@ -250,71 +294,64 @@ function plotLandlordTempWeekly(filename){
       .then(function(csv) {   
         Papa.parse(csv, {
             complete: function(results) {
-                //console.log(results);
-                generateData(results);
+                console.log(results);
+                generateData1(results);
                 var output1_plot = {
                   data: output1,
-                  label: "Temperature",
+                  label: "Total Power",
                   borderColor: "#f0ad4e",
                   fill: false,
                 }
-		var output2_plot = {
+                
+                var output2_plot = {
                   data: output2,
-                  label: "Humidity",
+                  label: "Avg",
                   borderColor: "#0052C2",
                   fill: false,
                 }
-		var output3_plot = {
-                  data: output3,
-                  label: "Visible",
-                  borderColor: "#003b8f",
-                  fill: false,
-                }
-		var output4_plot = {
-                  data: output4,
-                  label: "Infra-red",
-                  borderColor: "#4794ff",
-                  fill: false,
-                }
-		var output5_plot = {
-                  data: output5,
-                  label: "Acceleration_x",
-                  borderColor: "#9500cb",
-                  fill: false,
-                }
-		var output6_plot = {
-                  data: output6,
-                  label: "Acceleration_y",
-                  borderColor: "#5cb85c",
-                  fill: false,
-                }
-		var output7_plot = {
-                  data: output7,
-                  label: "Acceleration_z",
-                  borderColor: "#e27fef",
-                  fill: false,
-                }
+                var output3_plot = {
+                          data: output3,
+                          label: "Max",
+                          borderColor: "#003b8f",
+                          fill: false,
+                        }
+                var output4_plot = {
+                          data: output4,
+                          label: "Min",
+                          borderColor: "#4794ff",
+                          fill: false,
+                        }
                 
-                var x=0;
-                while(output1[x]!=""){
-                    x++;
+                document.getElementById('min').textContent = minMaxAvg[2].toString();
+                document.getElementById('max').textContent = minMaxAvg[1].toString();
+                document.getElementById('avg').textContent = minMaxAvg[0].toString();
+                
+                var sum = 0;
+                for (var n =0; n< output1.length; n++) {
+                    sum += parseFloat(output1[n]);
                 }
+                document.getElementById('total_P_consmp').textContent = (twoDec(sum).toString()+"kW");
+                document.getElementById('total_E_cost').textContent = ("£"+twoDec(sum).toString()*1.6);
         
-                var time_len=x;
-                console.log(output1);
-                console.log(x);
+                var time_len=output1.length;
                   myChart = new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar',
                     data: {
                       labels:Array.apply(null, Array(time_len)).map(function (_, i) {return i;}),
                       datasets: [
-                        output1_plot,output2_plot,output3_plot,output4_plot,output5_plot,output6_plot,output7_plot],
+                        output1_plot],
                     }
                   });
                                 
             }
         });
     });
+    
+    
+    document.getElementById('chart-title').textContent = 'Total Monthly Power Consumption for each Household';
+
+    
+    
     
 }
 
@@ -341,8 +378,8 @@ window.onload = function(){
     
     else if(location.pathname == "/landlord"){
         
-        var file = '/static/landLord.csv';
-        plotLandlordTempWeekly(file);
+        
+        plotLandlordPower(file);
     }
     
 
@@ -350,6 +387,82 @@ window.onload = function(){
   
 };
 
+function clearChart(){
+    //console.log(output1);
+
+    output1.length=0;
+    output2.length=0;
+    output3.length=0;
+    output4.length=0;
+    output5.length=0;
+    output6.length=0;
+    output7.length=0;
+    myChart.destroy();
+    
+    
+}
 
 
+function plotLandlordTempWeekly(){
+    /*console.log(output1);
+
+    output1.length=0;
+    output2.length=0;
+    output3.length=0;
+    output4.length=0;
+    output5.length=0;
+    output6.length=0;
+    output7.length=0;
+    myChart.destroy();
+    */
+    
+    clearChart();
+
+    
+    ctx = document.getElementById('myChart').getContext('2d');
+    
+    var myRequest = new Request("/static/daily_consumption.csv");
+
+    fetch(myRequest)
+      .then(function(response) { return response.text(); })
+      .then(function(csv) {   
+        Papa.parse(csv, {
+            complete: function(results) {
+                //console.log(results);
+                generateData2(results);
+                var output1_plot = {
+                  data: output1,
+                  label: "Normal",
+                  borderColor: "#f0ad4e",
+                  fill: false,
+                }
+                //console.log(output1);
+                //console.log(output2);
+		var output2_plot = {
+                  data: output2,
+                  label: "With E7",
+                  borderColor: "#0052C2",
+                  fill: false,
+                }
+		
+
+                  myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                      labels:Array.apply(null, Array(output1.length)).map(function (_, i) {return i;}),
+                      datasets: [
+                        output1_plot,output2_plot],
+                    }
+                  });
+                                
+            }
+        });
+    });
+    
+    document.getElementById('chart-title').textContent = 'Compiled Temperature Chart';
+    document.getElementById('min').textContent = "-";
+    document.getElementById('max').textContent = "-";
+    document.getElementById('avg').textContent = "-";
+    
+}
 

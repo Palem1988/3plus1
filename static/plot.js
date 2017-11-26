@@ -519,6 +519,7 @@ function clearChart(){
     output5.length=0;
     output6.length=0;
     output7.length=0;
+    time.length=0;
     myChart.destroy();
     
     
@@ -571,7 +572,7 @@ function plotLandlordTempWeekly(){
                   myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                      labels:Array.apply(null, Array(output1.length)).map(function (_, i) {return i;}),
+                      labels:time,
                       datasets: [
                         output1_plot,output2_plot],
                     },
